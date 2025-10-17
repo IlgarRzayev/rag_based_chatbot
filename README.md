@@ -67,12 +67,11 @@ Bu proje, **Retrieval Augmented Generation (RAG)** mimarisi kullanarak, kullanı
   
 
 
-<div align="center">
+
 
 
 ## 🛠️ Teknolojiler
 
-<div align="center">
 
 
 <table border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; width: 100%;">
