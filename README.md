@@ -69,71 +69,65 @@ Bu proje, **Retrieval Augmented Generation (RAG)** mimarisi kullanarak, kullanı
 
 <div align="center">
 
+
 ## 🛠️ Teknolojiler
+
+<div align="center">
+
 
 <table border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; width: 100%;">
   <thead style="background-color: #f8f9fa;">
     <tr>
-      <th width="20%">Kategori</th>
-      <th width="30%">Teknoloji</th>
-      <th width="35%">Açıklama</th>
-      <th width="15%">Versiyon</th>
+      <th>Kategori</th>
+      <th>Teknoloji</th>
+      <th>Açıklama</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td><strong>🤖 AI Model</strong></td>
+      <td><strong> AI Model</strong></td>
       <td>Google Gemini 2.5 Pro</td>
       <td>Şiir üretimi için ana LLM</td>
-      <td><code>Pro</code></td>
     </tr>
     <tr style="background-color: #f8f9fa;">
-      <td><strong>🔤 Embedding</strong></td>
+      <td><strong> Embedding</strong></td>
       <td>Multilingual MiniLM</td>
       <td>Metin vektörleştirme</td>
-      <td><code>v2</code></td>
     </tr>
     <tr>
-      <td><strong>🗄️ Vector DB</strong></td>
+      <td><strong> Vector DB</strong></td>
       <td>FAISS</td>
       <td>Benzerlik arama motoru</td>
-      <td><code>CPU</code></td>
     </tr>
     <tr style="background-color: #f8f9fa;">
-      <td><strong>⚡ Framework</strong></td>
+      <td><strong> Framework</strong></td>
       <td>LangChain</td>
       <td>RAG pipeline yönetimi</td>
-      <td><code>0.1+</code></td>
     </tr>
     <tr>
-      <td><strong>🌐 Web UI</strong></td>
+      <td><strong> Web UI</strong></td>
       <td>Gradio</td>
       <td>Kullanıcı arayüzü</td>
-      <td><code>4.0+</code></td>
     </tr>
     <tr style="background-color: #f8f9fa;">
-      <td><strong>🐍 Programlama</strong></td>
+      <td><strong> Programlama</strong></td>
       <td>Python</td>
       <td>Ana programlama dili</td>
-      <td><code>3.8+</code></td>
     </tr>
     <tr>
-      <td><strong>📊 Veri Seti</strong></td>
+      <td><strong> Veri Seti</strong></td>
       <td>Hugging Face</td>
       <td>Türkçe şiir koleksiyonu</td>
-      <td><code>19K</code></td>
     </tr>
     <tr style="background-color: #f8f9fa;">
-      <td><strong>🔗 API</strong></td>
+      <td><strong> API</strong></td>
       <td>Google Generative AI</td>
       <td>Gemini API erişimi</td>
-      <td><code>v1</code></td>
     </tr>
   </tbody>
 </table>
 
 </div>
-
   
 
 ---
@@ -167,8 +161,8 @@ Bu proje, **Retrieval Augmented Generation (RAG)** mimarisi kullanarak, kullanı
 
 #### 1. Repository'yi Klonlayın
 ```bash
-git clone https://github.com/IlgarRzayev/rag-based-project.git
-cd rag-based-project
+git https://github.com/IlgarRzayev/rag_based_chatbot.git
+cd rag_based_chatbot
 ```
 ####  2. `.env` dosyasını oluştur ve API anahtarlarını ekle
 ```bash
@@ -185,9 +179,9 @@ pip install -r requirements.txt
 ```bash
 jupyter notebook
 ```
--   Açılan tarayıcıda `turkish-poem-rag.ipynb` dosyasını açın
+#### 5.   Açılan tarayıcıda `rag_based_project.ipynb` dosyasını açın
     
--   Üst menüden **Run All** ile tüm hücreleri çalıştırın
+#### 6.   Üst menüden **Run All** ile tüm hücreleri çalıştırın
 
 # 📁 Proje Yapısı
 
@@ -195,6 +189,13 @@ jupyter notebook
 rag_based_chatbot/
 ├── rag_based_project.ipynb      # Ana proje notebook'u
 ├── requirements.txt             # Bağımlılıklar
-├── README.md                    # Bu dosya
+├── README.md                    
 
 ```
+
+# 📞 İletişim
+Proje hakkında sorunuz varsa iletişime geçebilrsiniz.
+
+-   GitHub: [@IlgarRzayev](https://github.com/IlgarRzayev)
+-   Linkedin: 
+
