@@ -226,7 +226,7 @@ echo  "HF_TOKEN=your_huggingface_token"  >> .env
 ```bash
 python app.py
 ```
-  6. Tarayıcınızda `http://localhost:5000` adresine gidin
+  6. Tarayıcınızda `http://127.0.0.1:7860` adresine gidin
 
 # 📁 Proje Yapısı
 
