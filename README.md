@@ -24,7 +24,7 @@
 
   
 
-[🌐 Web Uygulaması](#-web-uygulaması) • [🚀 Hızlı Başlangıç](#-hızlı-başlangıç) • [📊 Veri Seti](#-veri-seti) • [🏗️ Mimari](#️-mimari)
+[🌐 Web Uygulaması](#-web-uygulaması) • [🚀 Çalışma Kılavuzu](#-çalışma-kılavuzu) • [📊 Veri Seti](#-veri-seti) • [🏗️ Çözüm Mimarisi](#️-çözüm-mimarisi)
 
   
 
@@ -159,7 +159,7 @@ Bu proje, **Retrieval Augmented Generation (RAG)** mimarisi kullanarak, kullanı
 
   
 
-# 🚀 Hızlı Başlangıç
+# 🚀 Çalışma Kılavuzu
 
 ## 📋 Ön Koşullar
 - Python 3.8+
