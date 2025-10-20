@@ -36,7 +36,7 @@
 
   
 
-Bu proje, **Retrieval Augmented Generation (RAG)** mimarisi kullanarak, kullanıcıların belirlediği temalara uygun **orijinal Türkçe şiirler** üreten bir yapay zeka asistanıdır. Geleneksel Türk şiirinden öğrenerek yeni ve yaratıcı şiirler oluşturur.
+Bu proje, **Retrieval Augmented Generation (RAG)** mimarisi kullanarak, kullanıcıların belirlediği temalara uygun orijinal Türkçe şiirler üreten bir yapay zeka asistanıdır. Geleneksel Türk şiirinden öğrenerek yeni ve yaratıcı şiirler oluşturur.
 
   
 
@@ -48,26 +48,34 @@ Bu proje, **Retrieval Augmented Generation (RAG)** mimarisi kullanarak, kullanı
 
   
 
-- 🎨 **Tema Tabanlı Şiir Üretimi**: Kullanıcının girdiği her temaya uygun şiirler
+-  **Tema Tabanlı Şiir Üretimi**: Kullanıcının girdiği her temaya uygun şiirler
 
-- 📚 **Türk Edebiyatı Bilgisi**: 19.000+ şiirden oluşan veri seti
+-  **Türk Edebiyatı Bilgisi**: 19.000+ şiirden oluşan veri seti
 
-- 🤖 **Akıllı AI Modeli**: Google Gemini 2.5 Pro ile gelişmiş metin üretimi
+-  **Akıllı AI Modeli**: Google Gemini 2.5 Pro ile gelişmiş metin üretimi
 
-- ⚡ **Hızlı Arama**: FAISS ile anında benzer şiir bulma
+-  **Hızlı Arama**: FAISS ile anında benzer şiir bulma
 
-- 🎭 **Kafiye ve Ahenk**: Otomatik kafiye ve şiirsel yapı oluşturma
+-  **Kafiye ve Ahenk**: Otomatik kafiye ve şiirsel yapı oluşturma
 
-- 🌐 **Kullanıcı Dostu Arayüz**: Gradio ile modern web arayüzü
+-  **Kullanıcı Dostu Arayüz**: Gradio ile modern web arayüzü
 
   
 
 ---
 
   
+## 🧠 Çözüm Mimarisi
 
 
+### Çözülen Problemler
 
+-   **Yaratıcı Metin Üretimi**: Geleneksel dil modellerinin tekrara düşme eğilimini, gerçek şiir verisiyle zenginleştirilmiş RAG mimarisi ile aşar.
+    
+-   **Türkçe Doğal Dil İşleme**: Multilingual embedding modeli sayesinde Türkçe metinler etkili bir şekilde işlenir.
+    
+-   **Hızlı ve Etkili Arama**: FAISS ile büyük veri setlerinde benzerlik araması hızlıca yapılır.
+    
 
 
 ## 🛠️ Teknolojiler
@@ -128,6 +136,8 @@ Bu proje, **Retrieval Augmented Generation (RAG)** mimarisi kullanarak, kullanı
 
 </div>
   
+ ### 🔁 Mimari Akış Diyagramı 
+ Kullanıcı Girdisi (Tema) → Gradio Arayüzü → LangChain RAG Zinciri → FAISS Vektör Arama → Şiir Veritabanı (Embedding) → Gemini 2.5 Pro Modeli → Üretilen Şiir → Kullanıcı
 
 ---
 
@@ -158,6 +168,8 @@ Bu proje, **Retrieval Augmented Generation (RAG)** mimarisi kullanarak, kullanı
 
 ---
 
+##  Colab Ortamında Çalıştırma Adımları
+
 #### 1. Repository'yi Klonlayın
 ```bash
 git https://github.com/IlgarRzayev/rag_based_chatbot.git
@@ -165,9 +177,10 @@ cd rag_based_chatbot
 ```
 ####  2. `.env` dosyasını oluştur ve API anahtarlarını ekle
 ```bash
-GOOGLE_API_KEY=your_api_key
-HF_TOKEN=your_huggingface_token
+echo "GOOGLE_API_KEY=your_api_key" > .env
+echo "HF_TOKEN=your_huggingface_token" >> .env
 ```
+_Not: Colab'da sağ taraftaki dosya ikonundan .env dosyasını oluşturup düzenleyebilirsiniz_
 
 ####  3. Gerekli kütüphaneleri yükleyin
 ```bash
@@ -182,19 +195,53 @@ jupyter notebook
     
 #### 6.   Üst menüden **Run All** ile tüm hücreleri çalıştırın
 
+## Local Ortamda Çalıştırma Adımları
+
+#### 1. Repository'yi Klonla
+```bash
+git https://github.com/IlgarRzayev/rag_based_chatbot.git
+cd rag_based_chatbot
+```
+
+#### 2. Sanal ortam oluştur ve çalıştır
+```bash
+python -m venv venv
+source venv/bin/activate  # Linux/Mac
+venv\Scripts\activate     # Windows
+```
+
+####  3. Gerekli kütüphaneleri yükle
+```bash
+pip install -r requirements.txt
+```
+
+####  4. `.env` dosyası oluştur ve API anahtarlarını ekle
+```bash
+echo  "GOOGLE_API_KEY=your_api_key"  > .env 
+echo  "HF_TOKEN=your_huggingface_token"  >> .env
+```
+
+
+####  5. Uygulamayı başlat
+```bash
+python app.py
+```
+####  6. Tarayıcınızda `http://localhost:5000` adresine gidin
+
 # 📁 Proje Yapısı
 
 ```bash
 rag_based_chatbot/
 ├── rag_based_project.ipynb      # Ana proje notebook'u
+├── app.py
 ├── requirements.txt             # Bağımlılıklar
 ├── README.md                    
 
 ```
 
 # 📞 İletişim
-Proje hakkında sorunuz varsa iletişime geçebilrsiniz.
+Proje hakkında sorunuz varsa iletişime geçebilirsiniz.
 
--   GitHub: [@IlgarRzayev](https://github.com/IlgarRzayev)
--   Linkedin: 
+-   GitHub: https://github.com/IlgarRzayev
+-   Linkedin: https://www.linkedin.com/in/ilgar-rzayev-96996022a/
 
