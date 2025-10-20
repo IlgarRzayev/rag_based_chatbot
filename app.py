@@ -108,7 +108,7 @@ with gr.Blocks(
             ["İstanbul"],
             ["Baharda uyanış"]
         ],
-        inputs=tama_input,
+        inputs=tema_input,
         label="🎯 Hızlı Örnekler"
     )
     
