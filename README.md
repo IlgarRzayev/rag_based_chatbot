@@ -170,40 +170,40 @@ Bu proje, **Retrieval Augmented Generation (RAG)** mimarisi kullanarak, kullanı
 
 ##  Colab Ortamında Çalıştırma Adımları
 
-#### 1. Repository'yi Klonlayın
+ 1. Repository'yi Klonlayın
 ```bash
 git https://github.com/IlgarRzayev/rag_based_chatbot.git
 cd rag_based_chatbot
 ```
-####  2. `.env` dosyasını oluştur ve API anahtarlarını ekle
+  2. `.env` dosyasını oluştur ve API anahtarlarını ekle
 ```bash
 echo "GOOGLE_API_KEY=your_api_key" > .env
 echo "HF_TOKEN=your_huggingface_token" >> .env
 ```
 _Not: Colab'da sağ taraftaki dosya ikonundan .env dosyasını oluşturup düzenleyebilirsiniz_
 
-####  3. Gerekli kütüphaneleri yükleyin
+  3. Gerekli kütüphaneleri yükleyin
 ```bash
 pip install -r requirements.txt
 ```
 
-####  4. Uygulamayı Başlatın
+  4. Uygulamayı Başlatın
 ```bash
 jupyter notebook
 ```
-#### 5.   Açılan tarayıcıda `rag_based_project.ipynb` dosyasını açın
+ 5.   Açılan tarayıcıda `rag_based_project.ipynb` dosyasını açın
     
-#### 6.   Üst menüden **Run All** ile tüm hücreleri çalıştırın
+ 6.   Üst menüden **Run All** ile tüm hücreleri çalıştırın
 
 ## Local Ortamda Çalıştırma Adımları
 
-#### 1. Repository'yi Klonla
+ 1. Repository'yi Klonla
 ```bash
 git https://github.com/IlgarRzayev/rag_based_chatbot.git
 cd rag_based_chatbot
 ```
 
-#### 2. Sanal ortam oluştur ve çalıştır
+2. Sanal ortam oluştur ve çalıştır
 ```bash
 python -m venv venv
 source venv/bin/activate  # Linux/Mac
@@ -222,11 +222,11 @@ echo  "HF_TOKEN=your_huggingface_token"  >> .env
 ```
 
 
-####  5. Uygulamayı başlat
+ 5. Uygulamayı başlat
 ```bash
 python app.py
 ```
-####  6. Tarayıcınızda `http://localhost:5000` adresine gidin
+  6. Tarayıcınızda `http://localhost:5000` adresine gidin
 
 # 📁 Proje Yapısı
 
