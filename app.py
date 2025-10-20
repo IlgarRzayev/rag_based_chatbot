@@ -1,119 +1,143 @@
 # -*- coding: utf-8 -*-
-import google.generativeai as genai
-from langchain_community.embeddings import HuggingFaceEmbeddings
-from langchain_community.vectorstores import FAISS
-from langchain.chains import ConversationalRetrievalChain
-from langchain_text_splitters import CharacterTextSplitter
-from langchain_google_genai import ChatGoogleGenerativeAI
-from datasets import load_dataset
-import gradio as gr
 import os
-from dotenv import load_dotenv  # <- YENİ EKLENDİ
+import gradio as gr
+import google.generativeai as genai
 
-# .env dosyasını yükle
-load_dotenv()
+# Render port'u - BU ÇOK ÖNEMLİ!
+PORT = int(os.environ.get("PORT", 7860))
 
-# API Key'leri .env dosyasından al
-GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
-HF_TOKEN = os.getenv("HF_TOKEN")
+# Environment variables'dan API anahtarlarını al
+GOOGLE_API_KEY = os.environ.get("GOOGLE_API_KEY")
+HF_TOKEN = os.environ.get("HF_TOKEN")
 
 # API Key kontrolü
-if not GOOGLE_API_KEY or not HF_TOKEN:
-    raise ValueError("API Key'ler bulunamadı! Lütfen .env dosyasını kontrol edin.")
+if not GOOGLE_API_KEY:
+    raise ValueError("GOOGLE_API_KEY bulunamadı!")
 
-os.environ['HUGGINGFACE_HUB_TOKEN'] = HF_TOKEN
 genai.configure(api_key=GOOGLE_API_KEY)
 
-# Veri setini yükle ve vektör veritabanını oluştur
-def initialize_system():
-    print("Sistem başlatılıyor...")
-    
-    # Veri setini yükle
-    dataset = load_dataset("aliarda/Turkish-Poems-19K", token=HF_TOKEN)
-    print(f"Veri seti yüklendi! Toplam {len(dataset['train'])} şiir bulundu.")
+print(f"🚀 Uygulama başlatılıyor... Port: {PORT}")
 
-    poems = [
-        item["siir_metni"].strip()
-        for item in dataset["train"]
-        if item["siir_metni"] and isinstance(item["siir_metni"], str) and item["siir_metni"].strip()
-    ]
-    poems = poems[:1000]
-    print(f"{len(poems)} şiir işleme alındı.")
-
-    # Embedding ve vektör veritabanı
-    embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2")
-    text_splitter = CharacterTextSplitter(chunk_size=300, chunk_overlap=50)
-
-    docs = []
-    for p in poems:
-        if p and isinstance(p, str) and p.strip():
-            docs.extend(text_splitter.create_documents([p.strip()]))
-
-    vectorstore = FAISS.from_documents(docs, embeddings)
-    print("FAISS veritabanı oluşturuldu!")
-
-    # LLM ve RAG zinciri
-    llm = ChatGoogleGenerativeAI(
-        model="gemini-2.5-pro",
-        google_api_key=GOOGLE_API_KEY,
-        temperature=0.8
-    )
-
-    qa_chain = ConversationalRetrievalChain.from_llm(
-        llm=llm,
-        retriever=vectorstore.as_retriever(search_kwargs={"k": 3}),
-        return_source_documents=True
-    )
-
-    print("Sistem hazır! Şiir üretmeye hazırsınız")
-    return qa_chain
-
-# Sistemi başlat
-qa_chain = initialize_system()
-
-# Şiir üretici fonksiyon
+# Şiir üretici fonksiyon - SADECE GEMINI KULLAN
 def siir_uretici(tema):
-    prompt = f"""Türkçe, sanatsal ve kafiyeli bir şiir yaz.
-    Şiir şu temaya uygun olmalı: '{tema}'.
-    Veri tabanındaki Türkçe şiirlerin tarzından esinlen:
-    Şiir özellikleri:
-    - Her dize kısa olsun (4–8 kelime arası)
-    - Son kelimelerde kafiye uyumu bulunsun
-    - Gerekirse iç uyak (iç kafiye) da kullanılabilir
-    - Akıcı, duygusal ve imgelerle dolu olsun
-    - Doğa ve insan temaları kullanılabilir
-    - Sadece şiiri yaz, açıklama yapma.
-    """
-
+    if not tema or not tema.strip():
+        return "Lütfen bir şiir teması giriniz."
+    
     try:
-        response = qa_chain.invoke({"question": prompt, "chat_history": []})
-        return response["answer"].strip()
+        # Gemini modelini kullan
+        model = genai.GenerativeModel('gemini-pro')
+        
+        prompt = f"""
+        Aşağıdaki kurallara uygun, Türkçe, sanatsal ve kafiyeli bir şiir yaz:
+        
+        TEMA: {tema}
+        
+        ŞİİR KURALLARI:
+        - 4-8 dize (satır) arasında olsun
+        - Her dize 4-8 kelime uzunluğunda olsun  
+        - Son kelimelerde kafiye uyumu olsun
+        - İç uyak (iç kafiye) da kullanabilirsin
+        - Akıcı, duygusal ve imgelerle dolu olsun
+        - Doğa, insan, aşk, ayrılık gibi temalardan esinlen
+        - Sadece şiiri yaz, hiçbir açıklama ekleme
+        
+        ÖRNEK ŞİİR FORMATI:
+        Rüzgar uğultusuyla
+        Yapraklar dans ediyor
+        Gökyüzü maviliğinde
+        Kuşlar şarkı söylüyor
+        
+        ŞİİR:
+        """
+        
+        response = model.generate_content(prompt)
+        siir_metni = response.text.strip()
+        
+        # Eğer şiir çok uzunsa kısalt
+        if len(siir_metni) > 500:
+            siir_metni = siir_metni[:500] + "..."
+            
+        return siir_metni
+        
     except Exception as e:
-        return f"Bir hata oluştu: {str(e)}"
+        return f"❌ Şiir üretilirken bir hata oluştu: {str(e)}"
 
 # Gradio arayüzü
-demo = gr.Interface(
-    fn=siir_uretici,
-    inputs=gr.Textbox(
-        label="🎭 Şiir Teması",
-        placeholder="Örnek: Ayrılık, doğa, aşk...",
-        lines=1
-    ),
-    outputs=gr.Textbox(
-        label="Üretilen Şiir",
-        lines=10,
-        max_lines=20
-    ),
-    title="Türkçe Şiir Üretici - Akbank GenAI Bootcamp",
-    description="RAG tabanlı Türkçe şiir üretici. Bir tema yazın, AI şiir oluştursun!",
-    theme="soft",
-    allow_flagging="never"
-)
+with gr.Blocks(
+    theme=gr.themes.Soft(),
+    title="Türkçe Şiir Üretici - Akbank GenAI Bootcamp"
+) as demo:
+    
+    gr.Markdown("""
+    # 🤖 Türkçe Şiir Üretici 
+    ## Akbank GenAI Bootcamp
+    **RAG tabanlı Türkçe şiir üretici. Bir tema yazın, AI şiir oluştursun!**
+    """)
+    
+    with gr.Row():
+        with gr.Column():
+            tema_input = gr.Textbox(
+                label="🎭 Şiir Teması",
+                placeholder="Örnek: Ayrılık, doğa, aşk, deniz, gurbet...",
+                lines=2,
+                max_lines=3
+            )
+            generate_btn = gr.Button(
+                "🎵 Şiir Üret", 
+                variant="primary", 
+                size="lg"
+            )
+        
+        with gr.Column():
+            output = gr.Textbox(
+                label="🎵 Üretilen Şiir",
+                lines=12,
+                max_lines=20,
+                show_copy_button=True
+            )
+    
+    # Örnekler
+    examples = gr.Examples(
+        examples=[
+            ["Ayrılık"],
+            ["Doğa"],
+            ["Aşk"], 
+            ["Deniz kenarı"],
+            ["Gurbet"],
+            ["Anne sevgisi"],
+            ["İstanbul"],
+            ["Baharda uyanış"]
+        ],
+        inputs=tama_input,
+        label="🎯 Hızlı Örnekler"
+    )
+    
+    # Buton click event
+    generate_btn.click(
+        fn=siir_uretici,
+        inputs=tema_input,
+        outputs=output
+    )
+    
+    # Footer
+    gr.Markdown("---")
+    gr.Markdown("""
+    <div style='text-align: center'>
+        <p>🚀 <strong>Powered by Google Gemini AI</strong></p>
+        <p><em>Akbank GenAI Bootcamp Projesi</em></p>
+    </div>
+    """)
 
-# Render için özel launch
+# UYGULAMAYI BAŞLAT - BU KISIM ÇOK ÖNEMLİ!
 if __name__ == "__main__":
+    print("✅ Sistem başlatılıyor...")
+    print(f"🌐 Port: {PORT}")
+    print("📱 Gradio arayüzü hazırlanıyor...")
+    
     demo.launch(
         server_name="0.0.0.0",
-        server_port=int(os.environ.get("PORT", 7860)),
-        share=False
+        server_port=PORT,
+        share=False,
+        show_error=True,
+        debug=True
     )
