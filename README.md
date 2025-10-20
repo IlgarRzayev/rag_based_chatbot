@@ -210,12 +210,12 @@ source venv/bin/activate  # Linux/Mac
 venv\Scripts\activate     # Windows
 ```
 
-####  3. Gerekli kütüphaneleri yükle
+  3. Gerekli kütüphaneleri yükle
 ```bash
 pip install -r requirements.txt
 ```
 
-####  4. `.env` dosyası oluştur ve API anahtarlarını ekle
+  4. `.env` dosyası oluştur ve API anahtarlarını ekle
 ```bash
 echo  "GOOGLE_API_KEY=your_api_key"  > .env 
 echo  "HF_TOKEN=your_huggingface_token"  >> .env
