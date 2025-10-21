@@ -24,7 +24,7 @@
 
   
 
-[🌐 Web Uygulaması](#-web-uygulaması) • [🚀 Çalışma Kılavuzu](#-çalışma-kılavuzu) • [📊 Veri Seti](#-veri-seti) • [🏗️ Çözüm Mimarisi](#️-çözüm-mimarisi)
+[🚀 Çalışma Kılavuzu](#-çalışma-kılavuzu) • [🚀 Çalışma Kılavuzu](#-çalışma-kılavuzu) • [📊 Veri Seti](#-veri-seti) • [🏗️ Çözüm Mimarisi](#️-çözüm-mimarisi)
 
   
 
