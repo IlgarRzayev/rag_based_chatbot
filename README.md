@@ -177,8 +177,8 @@ cd rag_based_chatbot
 ```
   2. `.env` dosyasını oluştur ve API anahtarlarını ekle
 ```bash
-echo "GOOGLE_API_KEY=your_api_key" > .env
-echo "HF_TOKEN=your_huggingface_token" >> .env
+echo GOOGLE_API_KEY="your_api_key" > .env
+echo HF_TOKEN="your_huggingface_token" >> .env
 ```
 _Not: Colab'da sağ taraftaki dosya ikonundan .env dosyasını oluşturup düzenleyebilirsiniz_
 
@@ -217,8 +217,8 @@ pip install -r requirements.txt
 
   4. `.env` dosyası oluştur ve API anahtarlarını ekle
 ```bash
-echo  "GOOGLE_API_KEY=your_api_key"  > .env 
-echo  "HF_TOKEN=your_huggingface_token"  >> .env
+echo  GOOGLE_API_KEY="your_api_key"  > .env 
+echo  HF_TOKEN="your_huggingface_token"  >> .env
 ```
 
 
