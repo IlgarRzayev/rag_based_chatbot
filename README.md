@@ -159,16 +159,16 @@ Bu proje, **Retrieval Augmented Generation (RAG)** mimarisi kullanarak, kullanı
 
   
 
-# 🚀 Çalışma Kılavuzu
+## 🚀 Çalışma Kılavuzu
 
-## 📋 Ön Koşullar
+### 📋 Ön Koşullar
 - Python 3.8+
 - Google Gemini API anahtarı
 - Hugging Face token
 
 ---
 
-##  Colab Ortamında Çalıştırma Adımları
+###  Colab Ortamında Çalıştırma Adımları
 
  1. Repository'yi Klonlayın
 ```bash
@@ -195,7 +195,7 @@ jupyter notebook
     
  6.   Üst menüden **Run All** ile tüm hücreleri çalıştırın
 
-## Local Ortamda Çalıştırma Adımları
+### Local Ortamda Çalıştırma Adımları
 
  1. Repository'yi Klonla
 ```bash
