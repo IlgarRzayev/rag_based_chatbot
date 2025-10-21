@@ -238,7 +238,7 @@ rag_based_chatbot/
 ├── README.md                    
 
 ```
-# Deploy Link
+# Web Uygulaması
 https://huggingface.co/spaces/ilgar-rzayev/Turkish-poem-generator
 
 
