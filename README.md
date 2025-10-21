@@ -65,7 +65,7 @@ Bu proje, **Retrieval Augmented Generation (RAG)** mimarisi kullanarak, kullanı
 ---
 
   
-## 🧠 Çözüm Mimarisi
+## 🧠 Mimarisi
 
 
 ### Çözülen Problemler
