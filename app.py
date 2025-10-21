@@ -3,7 +3,7 @@ import os
 import gradio as gr
 import google.generativeai as genai
 
-# Render port'u - BU ÇOK ÖNEMLİ!
+# Render port'u 
 PORT = int(os.environ.get("PORT", 7860))
 
 # Environment variables'dan API anahtarlarını al
