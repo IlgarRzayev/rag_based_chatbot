@@ -12,7 +12,7 @@ import os
 
 # Environment variables'dan API anahtarlarını al
 GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
-HF_TOKEN = os.getenv("HUGGINGFACE_HUB_TOKEN")
+HF_TOKEN = os.getenv("HF_TOKEN")
 
 # API anahtarlarını kontrol et
 if not GOOGLE_API_KEY:
