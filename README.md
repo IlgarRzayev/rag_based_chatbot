@@ -246,7 +246,7 @@ Kullanıcı, metin kutusuna bir **tema** (örneğin _aşk, ayrılık, doğa_) ya
 
 ### 📸 Örnek Görseller
 
-Uygulama çalışınca çıkan arayüz:
+Uygulama çalışınca açılan arayüz:
 ![Tema Girişi](images/image1.jpeg)
 
 ---
