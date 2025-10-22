@@ -3,29 +3,26 @@
 import google.generativeai as genai
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
-from langchain.chains import ConversationalRetrievalChain
 from langchain_text_splitters import CharacterTextSplitter
 from langchain_google_genai import ChatGoogleGenerativeAI
 from datasets import load_dataset
 import gradio as gr
 import os
 
-# Environment variables'dan API anahtarlarını al
-GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
+GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY") 
 HF_TOKEN = os.getenv("HF_TOKEN")
 
-# API anahtarlarını kontrol et
+# Token'ı environment variable olarak ekle
+os.environ["HUGGINGFACE_HUB_TOKEN"] = HF_TOKEN
+
+# Dataset'i private token ile yükle
+dataset = load_dataset("aliarda/Turkish-Poems-19K")
+print(f"Veri seti yüklendi! Toplam {len(dataset['train'])} şiir bulundu.")
+
 if not GOOGLE_API_KEY:
     raise ValueError("GOOGLE_API_KEY environment variable bulunamadı!")
-if not HF_TOKEN:
-    raise ValueError("HUGGINGFACE_HUB_TOKEN environment variable bulunamadı!")
 
-os.environ['HUGGINGFACE_HUB_TOKEN'] = HF_TOKEN
 genai.configure(api_key=GOOGLE_API_KEY)
-
-# Veri setini yükle
-dataset = load_dataset("aliarda/Turkish-Poems-19K", token=HF_TOKEN)
-print(f"Veri seti yüklendi! Toplam {len(dataset['train'])} şiir bulundu.")
 
 poems = [
     item["siir_metni"].strip()
@@ -47,18 +44,23 @@ for p in poems:
 vectorstore = FAISS.from_documents(docs, embeddings)
 print("✅ FAISS veritabanı oluşturuldu!")
 
-# RAG zinciri ve LLM modeli
+# RAG mantığı: ChatGoogleGenerativeAI + FAISS retriever
 llm = ChatGoogleGenerativeAI(
-    model="gemini-1.5-pro",
+    model="gemini-flash-latest",
     google_api_key=GOOGLE_API_KEY,
     temperature=0.8
 )
 
-qa_chain = ConversationalRetrievalChain.from_llm(
-    llm=llm,
-    retriever=vectorstore.as_retriever(search_kwargs={"k": 3}),
-    return_source_documents=True
-)
+retriever = vectorstore.as_retriever(search_kwargs={"k": 3})
+
+# .chains kullanmadan QA fonksiyonu oluştur
+def qa_chain(question, chat_history=[]):
+    docs = retriever.invoke(question)
+    context = "\n\n".join([d.page_content for d in docs])
+    prompt_text = f"Soru: {question}\n\nBağlam:\n{context}\n\nCevap:"
+    response = llm.invoke(prompt_text)
+    return response
+
 
 print("Sistem hazır! Şiir üretmeye hazırsınız")
 
@@ -76,8 +78,8 @@ def siir_uretici(tema):
     - Sadece şiiri yaz, açıklama yapma.
     """
 
-    response = qa_chain.invoke({"question": prompt, "chat_history": []})
-    return response["answer"].strip()
+    response = qa_chain(prompt, chat_history=[])
+    return response.content.strip()
 
 
 demo = gr.Interface(
