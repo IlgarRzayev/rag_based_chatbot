@@ -25,8 +25,6 @@
 
   
 
-[🚀 Web Uygulaması](#-web-uygulaması) • [🚀 Çalışma Kılavuzu](#-çalışma-kılavuzu) • [📊 Veri Seti](#-veri-seti) • [🏗️ Mimari](#️-mimari)
-
   
 
 </div>
