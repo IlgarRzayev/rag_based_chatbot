@@ -246,7 +246,7 @@ Uygulama çalışınca çıkan arayüz:
 ![Tema Girişi](images/image3.jpeg)
 
 Örnek 3:
-![Tema Girişi](images/image3.jpeg)
+![Tema Girişi](images/image2.jpeg)
 
 
 ## 📁 Proje Yapısı
