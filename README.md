@@ -2,6 +2,7 @@
 
 
 
+
 # 🎭 Türkçe Şiir Üretici - RAG Tabanlı AI Asistanı
 
   
@@ -228,23 +229,29 @@ python app.py
 ```
   6. Tarayıcınızda `http://127.0.0.1:7860` adresine gidin
 
-# 📁 Proje Yapısı
+## 📁 Proje Yapısı
 
 ```bash
 rag_based_chatbot/
-├── rag_based_project.ipynb      # Ana proje notebook'u
+├── rag_based_project.ipynb      
 ├── app.py
-├── requirements.txt             # Bağımlılıklar
-├── README.md                    
+├── requirements.txt             
+├── README.md
+├── .gitignore                    
 
 ```
-# Web Uygulaması
-https://huggingface.co/spaces/ilgar-rzayev/Turkish-poem-generator
+## 💻 Web Uygulaması
+
+Proje, **Gradio** arayüzü üzerinden çalışmaktadır.  
+Kullanıcı, metin kutusuna bir **tema** (örneğin _aşk, ayrılık, doğa_) yazar ve **"Submit"** butonuna bastığında sistem, o temaya uygun kafiyeli bir Türkçe şiir üretir.
+
+🔗 **Canlı Demo:** https://huggingface.co/spaces/ilgar-rzayev/Turkish-poem-generator
 
 
 
 
-# 📞 İletişim
+
+## 📞 İletişim
 Proje hakkında sorunuz varsa iletişime geçebilirsiniz.
 
 -   GitHub: https://github.com/IlgarRzayev
