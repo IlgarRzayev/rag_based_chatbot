@@ -9,11 +9,22 @@ from datasets import load_dataset
 import gradio as gr
 import os
 
-GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY") 
+# Ortam değişkenlerinden al
+GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 HF_TOKEN = os.getenv("HF_TOKEN")
 
-# Token'ı environment variable olarak ekle
+# Eğer ortam değişkeni bulunmazsa kullanıcıdan al
+if not GOOGLE_API_KEY:
+    GOOGLE_API_KEY = input("Lütfen Google Gemini API anahtarınızı girin: ").strip()
+
+if not HF_TOKEN:
+    HF_TOKEN = input("Lütfen Hugging Face token’ınızı girin: ").strip()
+
+# Ortam değişkenlerine yeniden kaydet (bazı kütüphaneler buna ihtiyaç duyar)
+os.environ["GOOGLE_API_KEY"] = GOOGLE_API_KEY
 os.environ["HUGGINGFACE_HUB_TOKEN"] = HF_TOKEN
+
+
 
 # Dataset'i private token ile yükle
 dataset = load_dataset("aliarda/Turkish-Poems-19K")
