@@ -136,7 +136,7 @@ Bu proje, **Retrieval Augmented Generation (RAG)** mimarisi kullanarak, kullanı
 </div>
   
  ### 🔁 Mimari Akış Diyagramı 
- Kullanıcı Girdisi (Tema) → Gradio Arayüzü → ConversationalRetrievalChain (LangChain) → FAISS Vektör Arama → Şiir Veritabanı (Embedding) → Gemini 2.5 Pro Modeli → Üretilen Şiir → Kullanıcı
+ Kullanıcı Girdisi (Tema) → Gradio Arayüzü → ConversationalRetrievalChain (LangChain) → FAISS Vektör Arama → Şiir Veritabanı (Embedding) → Google Gemini Flash Latest → Üretilen Şiir → Kullanıcı
 
 ---
 
