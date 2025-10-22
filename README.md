@@ -229,6 +229,20 @@ python app.py
 Üst menüden **Runtime → Run all (Tümünü Çalıştır)** seçeneğini seçin.
 
 
+## 💻 Web Uygulaması
+
+🔗 **Canlı Demo:** https://huggingface.co/spaces/ilgar-rzayev/Turkish-poem-generator
+
+Proje, **Gradio** arayüzü üzerinden çalışmaktadır.  
+Kullanıcı, metin kutusuna bir **tema** (örneğin _aşk, ayrılık, doğa_) yazar ve **"Submit"** butonuna bastığında sistem, o temaya uygun  Türkçe şiir üretir.
+
+### 📸 Örnek Görseller
+
+
+
+
+
+
 
 ## 📁 Proje Yapısı
 
@@ -241,12 +255,8 @@ rag_based_chatbot/
 ├── .gitignore                    
 
 ```
-## 💻 Web Uygulaması
 
-Proje, **Gradio** arayüzü üzerinden çalışmaktadır.  
-Kullanıcı, metin kutusuna bir **tema** (örneğin _aşk, ayrılık, doğa_) yazar ve **"Submit"** butonuna bastığında sistem, o temaya uygun kafiyeli bir Türkçe şiir üretir.
 
-🔗 **Canlı Demo:** https://huggingface.co/spaces/ilgar-rzayev/Turkish-poem-generator
 
 
 
