@@ -156,6 +156,16 @@ Bu proje, **Retrieval Augmented Generation (RAG)** mimarisi kullanarak, kullanı
 
 -  **Kullanım**: Projede ilk 1.000 şiir işleme alınmıştır
 
+### 🧾 Veri Setinin Özellikleri
+
+-   Şiirler çeşitli yazarlar, temalar ve duygusal tonlar içermektedir.
+    
+-   Her kayıt, şiir metni ve bazen yazar bilgisiyle birlikte JSON formatında sunulmaktadır.
+    
+-   Şiirler uzunluk, tema ve biçim bakımından farklılık gösterdiği için modelin geniş bir dil ve duygu çeşitliliğini öğrenmesine olanak tanır.
+    
+-   Veri seti Türkçe doğal dil işleme (NLP) projeleri için uygun olacak şekilde önceden temizlenmiştir.
+
   
 
 ## 🚀 Çalışma Kılavuzu
