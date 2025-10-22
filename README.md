@@ -248,13 +248,15 @@ Kullanıcı, metin kutusuna bir **tema** (örneğin _aşk, ayrılık, doğa_) ya
 
 Uygulama çalışınca çıkan arayüz:
 ![Tema Girişi](images/image1.jpeg)
-
+---
 Örnek 1:
 ![Tema Girişi](images/image4.jpeg)
 
+---
+
 Örnek 2:
 ![Tema Girişi](images/image3.jpeg)
-
+---
 Örnek 3:
 ![Tema Girişi](images/image2.jpeg)
 
