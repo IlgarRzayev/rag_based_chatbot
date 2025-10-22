@@ -53,7 +53,7 @@ Bu proje, **Retrieval Augmented Generation (RAG)** mimarisi kullanarak, kullanı
 
 -  **Türk Edebiyatı Bilgisi**: 19.000+ şiirden oluşan veri seti
 
--  **Akıllı AI Modeli**: Google Gemini 2.5 Pro ile gelişmiş metin üretimi
+-  **Akıllı AI Modeli**: Google Gemini Flash Latest ile gelişmiş metin üretimi
 
 -  **Hızlı Arama**: FAISS ile anında benzer şiir bulma
 
@@ -94,7 +94,7 @@ Bu proje, **Retrieval Augmented Generation (RAG)** mimarisi kullanarak, kullanı
   <tbody>
     <tr>
       <td><strong> AI Model</strong></td>
-      <td>Google Gemini 2.5 Pro</td>
+      <td>Google Gemini Flash Latest</td>
       <td>Şiir üretimi için ana LLM</td>
     </tr>
     <tr style="background-color: #f8f9fa;">
@@ -169,38 +169,11 @@ Bu proje, **Retrieval Augmented Generation (RAG)** mimarisi kullanarak, kullanı
 
 ---
 
-###  Colab Ortamında Çalıştırma Adımları
-
- 1. Repository'yi Klonlayın
-```bash
-git https://github.com/IlgarRzayev/rag_based_chatbot.git
-cd rag_based_chatbot
-```
-  2. `.env` dosyasını oluştur ve API anahtarlarını ekle
-```bash
-echo GOOGLE_API_KEY="your_api_key" > .env
-echo HF_TOKEN="your_huggingface_token" >> .env
-```
-_Not: Colab'da sağ taraftaki dosya ikonundan .env dosyasını oluşturup düzenleyebilirsiniz_
-
-  3. Gerekli kütüphaneleri yükleyin
-```bash
-pip install -r requirements.txt
-```
-
-  4. Uygulamayı Başlatın
-```bash
-jupyter notebook
-```
- 5.   Açılan tarayıcıda `rag_based_project.ipynb` dosyasını açın
-    
- 6.   Üst menüden **Run All** ile tüm hücreleri çalıştırın
-
 ### Local Ortamda Çalıştırma Adımları
 
  1. Repository'yi Klonla
 ```bash
-git https://github.com/IlgarRzayev/rag_based_chatbot.git
+git clone https://github.com/IlgarRzayev/rag_based_chatbot.git
 cd rag_based_chatbot
 ```
 
@@ -228,6 +201,34 @@ echo  HF_TOKEN="your_huggingface_token"  >> .env
 python app.py
 ```
   6. Tarayıcınızda `http://127.0.0.1:7860` adresine gidin
+
+
+###  Colab Ortamında Çalıştırma Adımları
+
+1.  Tarayıcıdan https://colab.research.google.com adresine gidin.
+
+2. Açılan pencerede yan sekmeden **“GitHub”**’a tıklayın
+
+3. Arama kutusuna ```IlgarRzayev/rag_based_chatbot``` GitHub repo linkini yazın:
+ 
+4. ```rag_based_project.ipynb``` dosyasını seçin
+
+5.  Gizli Anahtarları Ekleyin (Secrets)
+    
+
+-   Colab menüsünden **“🔑 Secrets”** veya **“Environment Variables”** kısmına gidin
+    
+-   Aşağıdaki iki anahtarı ekleyin:
+    
+    -   `GOOGLE_API_KEY` → Gemini API anahtarınız
+        
+    -   `HF_TOKEN` → Hugging Face token’ınız
+
+ 5.   Tüm Hücreleri Çalıştırın  
+
+Üst menüden **Runtime → Run all (Tümünü Çalıştır)** seçeneğini seçin.
+
+
 
 ## 📁 Proje Yapısı
 
