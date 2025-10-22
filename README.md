@@ -236,7 +236,7 @@ Kullanıcı, metin kutusuna bir **tema** (örneğin _aşk, ayrılık, doğa_) ya
 
 ### 📸 Örnek Görseller
 
-
+![Tema Girişi](images/image1.jpeg)
 
 
 
