@@ -240,19 +240,24 @@ Uygulama çalışınca çıkan arayüz:
 ![Tema Girişi](images/image1.jpeg)
 
 Örnek 1:
-![Tema Girişi](images/image2.jpeg)
+![Tema Girişi](images/image4.jpeg)
 
 Örnek 2:
 ![Tema Girişi](images/image3.jpeg)
 
 Örnek 3:
-![Tema Girişi](images/image4.jpeg)
+![Tema Girişi](images/image3.jpeg)
 
 
 ## 📁 Proje Yapısı
 
 ```bash
 rag_based_chatbot/
+├── images/                      
+│   ├── image1.jpeg
+│   ├── image2.jpeg
+│   ├── image3.jpeg
+│   └── image4.jpeg
 ├── rag_based_project.ipynb      
 ├── app.py
 ├── requirements.txt             
